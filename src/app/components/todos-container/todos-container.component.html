@@ -1,0 +1,38 @@
+<div id="todos-container">
+  <div id="todo-parent">
+    <h2>Todos</h2>
+    <ol id="todos">
+      <li *ngFor="let todo of todos; let i = index">
+        {{ todo }}
+        <span 
+          id="post"
+          (click)="postpone(i)"
+        >[post]</span>
+        <span 
+          id="remove"
+          (click)="remove(i, 'todos')"
+        >[remove]</span>
+      </li>
+    </ol> 
+  </div>
+  <div id="postponed-parent">
+    <h2 id="postponed">Postponed</h2>
+    <ol>
+      <li *ngFor="let todo of postponed; let i = index">
+        {{ todo }}
+        <span 
+          id="post"
+          (click)="priorize(i)"
+        >[priorize] </span>
+        <span 
+          id="remove"
+          (click)="remove(i, 'post')"
+        >[remove]</span>
+      </li>
+    </ol> 
+  </div>
+  <div id="input">
+    <input (keyup.enter)="addTodo()" [(ngModel)]="temp"/>
+    <button (click)="addTodo()">add</button>
+  </div>
+</div>
